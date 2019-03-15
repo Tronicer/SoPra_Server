@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+//import date object class;
+import java.util.Date;
+
 @Entity
 public class User implements Serializable {
 	
@@ -18,18 +21,27 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	@Column(nullable = false) 
+
+	@Column(nullable = false)
 	private String name;
 	
 	@Column(nullable = false, unique = true) 
 	private String username;
-	
+
+	@Column
+	private String birthday;
+
+	@Column(nullable = false)
+	private String password;
+
 	@Column(nullable = false, unique = true) 
 	private String token;
 
 	@Column(nullable = false)
 	private UserStatus status;
+
+	@Column
+	private String creation_date;
 
 	public Long getId() {
 		return id;
@@ -69,6 +81,22 @@ public class User implements Serializable {
 
 	public void setStatus(UserStatus status) {
 		this.status = status;
+	}
+	public String getBirthday(){return (this.birthday);}
+
+	public void setBirthday(String birth){this.birthday=birth;}
+
+	public String getCreation_date() {
+		return creation_date;
+	}
+
+	public String getPassword(){return password;}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public void setCreation_date(String creation_date) {
+		this.creation_date = creation_date;
 	}
 
 	@Override
